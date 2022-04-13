@@ -24,19 +24,19 @@ namespace zich
         bool operator>(const Matrix &other) const;
         // mathematical functions between two matrix
         Matrix operator+(const Matrix &other);
-        Matrix operator+=(const Matrix &other);
+        Matrix& operator+=(const Matrix &other);
         Matrix operator-(const Matrix &other);
-        Matrix operator-=(const Matrix &other);
+        Matrix& operator-=(const Matrix &other);
         Matrix operator*(const Matrix &other);
-        Matrix operator*=(const Matrix &other);
+        Matrix& operator*=(const Matrix &other);
         // mathematical functions on matrix
         friend Matrix operator*(double scalar, const Matrix &mat);
         Matrix operator*(double scalar);
-        Matrix operator*=(double scalar);
+        Matrix& operator*=(double scalar);
         Matrix& operator++();
-        Matrix operator++(int dummy_flag_for_postfix_increment);
+        Matrix operator++(int postfix_increasment);
         Matrix& operator--();
-        Matrix operator--(int dummy_flag_for_postfix_increment);
+        Matrix operator--(int postfix_dicreasment);
         Matrix operator+();
         Matrix operator-();
         friend std::ostream &operator<<(std::ostream &os, const Matrix &mat);

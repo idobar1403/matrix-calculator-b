@@ -25,6 +25,9 @@ test: TestRunner.o StudentTest1.o StudentTest2.o StudentTest3.o $(OBJECTS)
 $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
+main: Main.o $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o main
+
 StudentTest1.cpp:  # Itzik
 	curl https://raw.githubusercontent.com/itzikbs1/Ex3_A_Cpp/master/Test.cpp > $@
 
@@ -41,5 +44,5 @@ valgrind: test
 	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./test 2>&1 | { egrep "lost| at " || true; }
 
 clean:
-	rm -f $(OBJECTS) *.o test* 
+	rm -f $(OBJECTS) *.o test* main*
 	rm -f StudentTest*.cpp
