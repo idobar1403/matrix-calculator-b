@@ -248,18 +248,18 @@ int main()
         }
         else if (num == 3)
         {
-            cout << "For ++ choose 1, for -- choose 2, for + choose 3, for + choose 4\n";
+            cout << "For ++ choose 1, for -- choose 2, for + choose 3, for - choose 4\n";
             int ans3;
             cin >> ans3;
             while (ans3 >= 1 && ans3 <= 4)
             {
                 if (ans3 == 1)
                 {
-                    cout << mat++;
+                    cout << ++(mat);
                 }
                 else if (ans3 == 2)
                 {
-                    cout << mat--;
+                    cout << --(mat);
                 }
                 else if (ans3 == 3)
                 {
@@ -270,7 +270,7 @@ int main()
                     cout << (-mat);
                 }
                 cout << endl;
-                cout << "For ++ choose 1, for -- choose 2, for + choose 3, for + choose 4\n";
+                cout << "For ++ choose 1, for -- choose 2, for + choose 3, for - choose 4\n";
                 cin >> ans3;
                 cout << endl;
             }

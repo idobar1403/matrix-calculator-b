@@ -46,6 +46,14 @@ TEST_CASE("Matrix multiplication")
                      "[ 1990 5778 826 ]\n"
                      "[ 3400 3924 477 ]\n"
                      "[ 1920 743 213 ]\n");
+    s.str("");
+    big *= same_row_size;
+    s << (+big); // big matrix multiplication check
+    CHECK(s.str() == "[ 2686 8922 1111 ]\n"
+                     "[ 3264 10629 1405 ]\n"
+                     "[ 1990 5778 826 ]\n"
+                     "[ 3400 3924 477 ]\n"
+                     "[ 1920 743 213 ]\n");
 }
 TEST_CASE("Matrix plus minus")
 {
@@ -97,6 +105,13 @@ TEST_CASE("Matrix plus minus")
                      "[ 2 1 2 2 ]\n"
                      "[ 2 2 1 2 ]\n"
                      "[ 2 2 2 1 ]\n");
+    s.str("");
+    iden += minus_make_iden;
+    s << (+iden); // want the identity matrix
+    CHECK(s.str() == "[ 1 0 0 0 ]\n"
+                     "[ 0 1 0 0 ]\n"
+                     "[ 0 0 1 0 ]\n"
+                     "[ 0 0 0 1 ]\n");
     std::vector<double> big_mat = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
     std::vector<double> another_big_mat = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
     Matrix big_m{big_mat, 4, 4};
@@ -119,6 +134,13 @@ TEST_CASE("Matrix plus minus")
                      "[ -1 -1 -1 -1 ]\n"
                      "[ -1 -1 -1 -1 ]\n"
                      "[ -1 -1 -1 -1 ]\n");
+    s.str("");
+    big_m -= a_m;
+    s << (+(big_m)); // 1 at every entry
+    CHECK(s.str() == "[ 1 1 1 1 ]\n"
+                     "[ 1 1 1 1 ]\n"
+                     "[ 1 1 1 1 ]\n"
+                     "[ 1 1 1 1 ]\n");
 }
 TEST_CASE("unari operators")
 {
@@ -204,8 +226,15 @@ TEST_CASE("scalar multiplication")
                      "[ -1.25 -1.5 -1.75 -2 ]\n"
                      "[ -2.25 -2.5 2.75 3.25 ]\n"
                      "[ 3.5 3 -3.75 -4 ]\n");
+    s.str("");
+    mat *= 0.5;
+    s << (1 * mat);
+    CHECK(s.str() == "[ 0.5 1 1.5 2 ]\n"
+                     "[ 2.5 3 3.5 4 ]\n"
+                     "[ 4.5 5 -5.5 -6.5 ]\n"
+                     "[ -7 -6 7.5 8 ]\n");
 }
-TEST_CASE("compating")
+TEST_CASE("comparing")
 {
     std::vector<double> _mat = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -13, -14, -12, 15, 16};
     Matrix mat{_mat, 4, 4};
