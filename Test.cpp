@@ -280,3 +280,11 @@ TEST_CASE("invalid sizes")
     CHECK_THROWS(Matrix(big_mat_1, 6, -6));  // can't create matrix with negative values
     CHECK_THROWS(Matrix(big_mat_1, -1, -3)); // can't create matrix with negative values
 }
+TEST_CASE("input"){
+    std::vector<double> identity_to_be = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    Matrix iden{identity_to_be, 4, 4};
+    istringstream is{"[1 1 1 1],[1 1 1 1], [1 1 1 1]\n"};
+    CHECK_THROWS(is >> iden);
+    istringstream is2{"[1 1 1 1], [1 1 1 1], [1 1 1 1]\n"};
+    CHECK_NOTHROW(is2 >> iden);
+}
